@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fabrizio Bonafina — Full-Stack .NET & IA</title>
+<meta name="description" content="Desarrollador Full-Stack .NET Senior especializado en automatización y agentes de IA en producción. Valencia, España.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0f14;
+    --bg-elev:#111823;
+    --bg-elev-2:#161f2c;
+    --border:#232e3d;
+    --text:#e7edf5;
+    --text-dim:#9fb0c3;
+    --text-faint:#64758a;
+    --accent:#5fd0c0;
+    --accent-soft:rgba(95,208,192,0.12);
+    --accent-2:#7c9eff;
+    --radius:14px;
+    --maxw:920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  code, .mono{font-family:'JetBrains Mono',monospace;}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:20;
+    background:rgba(11,15,20,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{font-weight:700;font-size:15px;letter-spacing:0.02em;text-decoration:none;}
+  .brand span{color:var(--accent);}
+  .navlinks{display:flex;gap:28px;list-style:none;margin:0;padding:0;}
+  .navlinks a{font-size:14px;color:var(--text-dim);text-decoration:none;transition:color .15s;}
+  .navlinks a:hover{color:var(--text);}
+  .nav-cta{
+    font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;
+    background:var(--accent);color:#08211d;text-decoration:none;
+  }
+  @media (max-width:680px){ .navlinks{display:none;} }
+
+  /* HERO */
+  .hero{padding:96px 0 72px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;color:var(--accent);font-weight:600;
+    background:var(--accent-soft);border:1px solid rgba(95,208,192,0.25);
+    padding:6px 14px;border-radius:999px;margin-bottom:24px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
+  h1{
+    font-size:clamp(34px,5.5vw,54px);
+    line-height:1.08;font-weight:800;letter-spacing:-0.02em;
+    margin:0 0 20px;
+  }
+  h1 .grad{
+    background:linear-gradient(95deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .lede{font-size:19px;color:var(--text-dim);max-width:640px;margin:0 0 36px;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 22px;border-radius:10px;font-weight:600;font-size:14.5px;
+    text-decoration:none;transition:transform .15s,border-color .15s,background .15s;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--accent);color:#08211d;}
+  .btn-primary:hover{transform:translateY(-1px);}
+  .btn-ghost{border-color:var(--border);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+  .stat{background:var(--bg-elev);padding:20px 18px;}
+  .stat b{display:block;font-size:24px;font-weight:800;color:var(--text);}
+  .stat span{font-size:12.5px;color:var(--text-faint);}
+  @media (max-width:680px){ .stats{grid-template-columns:repeat(2,1fr);} }
+
+  /* SECTIONS */
+  section{padding:64px 0;border-top:1px solid var(--border);}
+  .section-head{margin-bottom:40px;}
+  .kicker{font-size:12.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px;}
+  h2{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-0.01em;margin:0 0 12px;}
+  .section-sub{color:var(--text-dim);max-width:620px;margin:0;}
+
+  /* PROJECT */
+  .project-card{
+    background:linear-gradient(180deg,var(--bg-elev),var(--bg-elev-2));
+    border:1px solid var(--border);border-radius:var(--radius);
+    padding:36px;
+  }
+  .project-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:18px;}
+  .project-title{font-size:22px;font-weight:700;margin:0 0 6px;}
+  .project-status{font-size:12.5px;color:var(--accent);font-weight:600;}
+  .project-desc{color:var(--text-dim);margin:0 0 22px;max-width:640px;}
+  .feature-list{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:12px;}
+  .feature-list li{
+    display:flex;gap:12px;font-size:14.5px;color:var(--text);
+    padding-left:0;
+  }
+  .feature-list li::before{
+    content:"→";color:var(--accent);font-weight:700;flex-shrink:0;
+  }
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{
+    font-size:12.5px;font-family:'JetBrains Mono',monospace;
+    padding:5px 11px;border-radius:6px;
+    background:var(--bg);border:1px solid var(--border);color:var(--text-dim);
+  }
+
+  /* EXPERIENCE */
+  .timeline{border-left:2px solid var(--border);margin-left:6px;}
+  .tl-item{position:relative;padding:0 0 34px 28px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";position:absolute;left:-7px;top:4px;
+    width:12px;height:12px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--accent);
+  }
+  .tl-item.current::before{background:var(--accent);}
+  .tl-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;margin-bottom:4px;}
+  .tl-role{font-weight:700;font-size:16.5px;}
+  .tl-period{font-size:13px;color:var(--text-faint);font-family:'JetBrains Mono',monospace;white-space:nowrap;}
+  .tl-company{color:var(--accent);font-size:14px;font-weight:600;margin-bottom:8px;}
+  .tl-desc{color:var(--text-dim);font-size:14.5px;margin:0;max-width:600px;}
+  .tl-more{margin-top:24px;padding-top:24px;border-top:1px dashed var(--border);color:var(--text-faint);font-size:13.5px;}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+  .skill-card{background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:22px;}
+  .skill-card h3{font-size:14px;margin:0 0 14px;color:var(--accent);}
+  .skill-card .tag-row .tag{background:var(--bg);}
+
+  /* CONTACT */
+  .contact-card{
+    background:var(--bg-elev);border:1px solid var(--border);border-radius:var(--radius);
+    padding:44px;text-align:center;
+  }
+  .contact-card h2{margin-bottom:12px;}
+  .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px;}
+
+  footer{padding:32px 0;text-align:center;color:var(--text-faint);font-size:13px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#" class="brand">FABRIZIO<span>.</span>BONAFINA</a>
+    <ul class="navlinks">
+      <li><a href="#proyecto">Proyecto</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="nav-cta" href="assets/CV_FabrizioBonafina.pdf" target="_blank" rel="noopener">Descargar CV</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap" style="border-top:none;">
+    <div class="eyebrow"><span class="dot"></span> Disponible para proyectos de automatización con IA</div>
+    <h1>Construyo software .NET<br>y lo hago pensar con <span class="grad">IA</span>.</h1>
+    <p class="lede">
+      Desarrollador Full-Stack .NET Senior con 6+ años en empresas internacionales.
+      Diseño e implemento agentes y automatizaciones con IA generativa que resuelven
+      procesos de negocio reales — no demos, sistemas en producción.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#proyecto">Ver proyecto destacado</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/fabrizio-bonafina/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="mailto:fabrizio.bonafina@gmail.com">Escribime</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>6+</b><span>años de experiencia</span></div>
+      <div class="stat"><b>.NET</b><span>C# · ASP.NET Core</span></div>
+      <div class="stat"><b>IA</b><span>Agentes &amp; automatización</span></div>
+      <div class="stat"><b>ES</b><span>Valencia, España</span></div>
+    </div>
+  </section>
+
+  <section id="proyecto">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Proyecto destacado</p>
+        <h2>AppControl</h2>
+        <p class="section-sub">Plataforma de finanzas personales con IA, diseñada y construida por mí de punta a punta — en uso real, todos los días.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-head">
+          <div>
+            <p class="project-title">Finanzas personales, resueltas con un bot y un modelo de lenguaje</p>
+            <p class="project-status">● En producción desde 2026</p>
+          </div>
+        </div>
+        <p class="project-desc">
+          Aplicación full-stack que centraliza cuentas, gastos y presupuesto. La parte
+          interesante no es el CRUD: es todo lo que corre solo, sin que yo tenga que tocar nada.
+        </p>
+        <ul class="feature-list">
+          <li>Bot de Telegram con IA generativa (Gemini) que lee fotos de tickets y transcribe audios para categorizar gastos automáticamente.</li>
+          <li>Motor de categorización automática de transacciones y sincronización bancaria vía API.</li>
+          <li>Alertas y reportes financieros programados por cron job, con auditoría de seguridad en funciones serverless (RLS, control de acceso).</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Next.js</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Edge Functions</span>
+          <span class="tag">Telegram Bot API</span>
+          <span class="tag">Gemini API</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiencia">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Experiencia</p>
+        <h2>Dónde apliqué todo esto</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item current">
+          <div class="tl-top">
+            <span class="tl-role">Ingeniero de Software .NET</span>
+            <span class="tl-period">2025 — presente</span>
+          </div>
+          <div class="tl-company">Minsait</div>
+          <p class="tl-desc">Desarrollador principal en proyectos estratégicos para el Ministerio de Turismo e Industria. Pipelines de CI/CD y análisis de calidad de código con SonarQube.</p>
+        </div>
+        <div class="tl-item current">
+          <div class="tl-top">
+            <span class="tl-role">Desarrollador .NET Freelance — Automatización con IA</span>
+            <span class="tl-period">2021 — presente</span>
+          </div>
+          <div class="tl-company">Assist Card / Aiotek</div>
+          <p class="tl-desc">Portales de seguros usados por numerosas agencias. Proceso de emisión automática con Dify y Power Automate que procesa un alto volumen de emisiones diarias sin intervención manual.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-top">
+            <span class="tl-role">Desarrollador .NET (Consultor)</span>
+            <span class="tl-period">2023 — 2024</span>
+          </div>
+          <div class="tl-company">The Whiteam</div>
+          <p class="tl-desc">Desarrollo de aplicaciones .NET para proyectos clave de Minsait, optimizando procesos críticos y rendimiento.</p>
+        </div>
+        <div class="tl-more">
+          + Itecnous, Hiberus, The App Master y IPG MediaBrands (2018 — 2023) — trayectoria completa en el CV.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Stack</p>
+        <h2>Con qué trabajo</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>IA &amp; AUTOMATIZACIÓN</h3>
+          <div class="tag-row">
+            <span class="tag">Agentes LLM</span>
+            <span class="tag">Claude Code</span>
+            <span class="tag">GitHub Copilot</span>
+            <span class="tag">Copilot Studio</span>
+            <span class="tag">n8n</span>
+            <span class="tag">Power Automate</span>
+            <span class="tag">Dify</span>
+            <span class="tag">Prompt Engineering</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>FULL-STACK .NET</h3>
+          <div class="tag-row">
+            <span class="tag">C#</span>
+            <span class="tag">ASP.NET Core</span>
+            <span class="tag">Entity Framework</span>
+            <span class="tag">LINQ</span>
+            <span class="tag">Dapper</span>
+            <span class="tag">MediatR</span>
+            <span class="tag">Clean Architecture</span>
+            <span class="tag">SOLID</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>FRONTEND</h3>
+          <div class="tag-row">
+            <span class="tag">Angular</span>
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>DATOS &amp; CLOUD</h3>
+          <div class="tag-row">
+            <span class="tag">SQL Server</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">Azure</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="contact-card">
+        <p class="kicker" style="justify-content:center;display:flex;">Contacto</p>
+        <h2>¿Hablamos?</h2>
+        <p class="section-sub" style="margin:0 auto;">Valencia, España — abierto a charlar sobre proyectos de desarrollo .NET o automatización con IA.</p>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="mailto:fabrizio.bonafina@gmail.com">fabrizio.bonafina@gmail.com</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/fabrizio-bonafina/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-ghost" href="assets/CV_FabrizioBonafina.pdf" target="_blank" rel="noopener">Descargar CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 Fabrizio Bonafina — Valencia, España
+</footer>
+
+</body>
+</html>
