@@ -166,6 +166,7 @@
     <a href="#" class="brand">FABRIZIO<span>.</span>BONAFINA</a>
     <ul class="navlinks">
       <li><a href="#proyecto">Proyecto</a></li>
+      <li><a href="#codigo">Código</a></li>
       <li><a href="#experiencia">Experiencia</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contacto">Contacto</a></li>
@@ -227,6 +228,47 @@
           <span class="tag">Edge Functions</span>
           <span class="tag">Telegram Bot API</span>
           <span class="tag">Gemini API</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="codigo">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Código público</p>
+        <h2>Repositorios</h2>
+        <p class="section-sub">Código que se puede leer, ejecutar y probar.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-head">
+          <div>
+            <p class="project-title">Gestor de turnos — .NET 8 + Angular</p>
+            <p class="project-status">● Tests pasando · CI en GitHub Actions</p>
+          </div>
+          <a class="btn btn-ghost" href="https://github.com/fabrobona/turnos-dotnet-angular" target="_blank" rel="noopener">Ver en GitHub</a>
+        </div>
+        <p class="project-desc">
+          API con Clean Architecture y frontend en Angular para gestionar la agenda de un negocio pequeño.
+          Un asistente interpreta mensajes de WhatsApp y propone el turno; una persona siempre lo confirma.
+        </p>
+        <ul class="feature-list">
+          <li>Reglas de negocio en el dominio, casos de uso con MediatR y errores uniformes (RFC 7807).</li>
+          <li>Control de horarios que se pisan, ciclo de vida del turno y reprogramación.</li>
+          <li>Interpretación de mensajes con Gemini y respaldo por reglas locales si el servicio falla.</li>
+          <li>65 tests unitarios y 17 de integración en .NET, más 39 en Angular. Docker Compose y CI incluidos.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">.NET 8</span>
+          <span class="tag">ASP.NET Core</span>
+          <span class="tag">Clean Architecture</span>
+          <span class="tag">EF Core</span>
+          <span class="tag">MediatR</span>
+          <span class="tag">xUnit</span>
+          <span class="tag">Angular 20</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Docker</span>
+          <span class="tag">GitHub Actions</span>
         </div>
       </div>
     </div>
