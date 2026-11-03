@@ -158,6 +158,25 @@
   .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px;}
 
   footer{padding:32px 0;text-align:center;color:var(--text-faint);font-size:13px;}
+
+  /* LANGUAGE SWITCH */
+  .lang{display:flex;border:1px solid var(--border);border-radius:999px;padding:2px;margin-left:auto;margin-right:14px;}
+  .lang button{
+    background:none;border:0;color:var(--text-dim);font:inherit;font-size:12px;font-weight:700;
+    letter-spacing:0.04em;padding:5px 11px;border-radius:999px;cursor:pointer;
+  }
+  .lang button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent);}
+  .lang button:focus-visible{outline:2px solid var(--accent);outline-offset:1px;}
+  .nav-cta{white-space:nowrap;}
+  .brand{white-space:nowrap;}
+  @media (max-width:680px){ .lang{margin-right:8px;} }
+  @media (max-width:480px){
+    nav.wrap{padding:0 16px;}
+    .brand{font-size:12px;letter-spacing:-0.01em;}
+    .nav-cta{font-size:12px;padding:7px 10px;}
+    .lang button{padding:5px 8px;font-size:11px;}
+    .lang{margin-right:6px;}
+  }
 </style>
 </head>
 <body>
@@ -172,6 +191,10 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
     <a class="nav-cta" href="assets/CV_FabrizioBonafina.pdf" target="_blank" rel="noopener">Descargar CV</a>
   </nav>
 </header>
@@ -389,6 +412,139 @@
 <footer>
   © 2026 Fabrizio Bonafina — Valencia, España
 </footer>
+
+<script>
+(function () {
+  // El español es el contenido base del HTML. Cada clave es un texto en español (sin espacios sobrantes).
+  var EN = {
+    'Proyecto': 'Project',
+    'Código': 'Code',
+    'Experiencia': 'Experience',
+    'Contacto': 'Contact',
+    'Descargar CV': 'Download CV',
+    'Full-Stack .NET · Automatización con IA': 'Full-Stack .NET · AI Automation',
+    'Construyo software .NET': 'I build .NET software',
+    'y lo hago pensar con': 'and make it think with',
+    'IA': 'AI',
+    'Desarrollador Full-Stack .NET Senior con 6+ años en empresas internacionales. Diseño e implemento agentes y automatizaciones con IA generativa que resuelven procesos de negocio reales — no demos, sistemas en producción.':
+      'Senior Full-Stack .NET Developer with 6+ years at international companies. I design and implement agents and automations with generative AI that solve real business processes — not demos, production systems.',
+    'Ver proyecto destacado': 'See featured project',
+    'Escribime': 'Email me',
+    'años de experiencia': 'years of experience',
+    'Agentes & automatización': 'Agents & automation',
+    'Valencia, España': 'Valencia, Spain',
+    'Proyecto destacado': 'Featured project',
+    'Plataforma de finanzas personales con IA, diseñada y construida por mí de punta a punta — en uso real, todos los días.':
+      'Personal finance platform with AI, designed and built end to end by me — in real daily use.',
+    'Finanzas personales, resueltas con un bot y un modelo de lenguaje': 'Personal finances, handled by a bot and a language model',
+    '● En producción desde 2026': '● In production since 2026',
+    'Aplicación full-stack que centraliza cuentas, gastos y presupuesto. La parte interesante no es el CRUD: es todo lo que corre solo, sin que yo tenga que tocar nada.':
+      "Full-stack application that centralizes accounts, expenses and budget. The interesting part isn't the CRUD: it's everything that runs on its own, without me having to touch anything.",
+    'Bot de Telegram con IA generativa (Gemini) que lee fotos de tickets y transcribe audios para categorizar gastos automáticamente.':
+      'Telegram bot with generative AI (Gemini) that reads receipt photos and transcribes voice messages to categorize expenses automatically.',
+    'Motor de categorización automática de transacciones y sincronización bancaria vía API.':
+      'Automatic transaction categorization engine and bank synchronization via API.',
+    'Alertas y reportes financieros programados por cron job, con auditoría de seguridad en funciones serverless (RLS, control de acceso).':
+      'Financial alerts and reports scheduled by cron job, with security auditing of serverless functions (RLS, access control).',
+    'Código público': 'Public code',
+    'Repositorios': 'Repositories',
+    'Código que se puede leer, ejecutar y probar.': 'Code you can read, run and test.',
+    'Gestor de turnos — .NET 8 + Angular': 'Appointment Manager — .NET 8 + Angular',
+    '● Tests pasando · CI en GitHub Actions': '● Passing tests · CI on GitHub Actions',
+    'Ver en GitHub': 'View on GitHub',
+    'API con Clean Architecture y frontend en Angular para gestionar la agenda de un negocio pequeño. Un asistente interpreta mensajes de WhatsApp y propone el turno; una persona siempre lo confirma.':
+      'API with Clean Architecture and an Angular frontend to manage the schedule of a small business. An assistant interprets WhatsApp messages and proposes the appointment; a person always confirms it.',
+    'Reglas de negocio en el dominio, casos de uso con MediatR y errores uniformes (RFC 7807).':
+      'Business rules in the domain, use cases with MediatR and uniform errors (RFC 7807).',
+    'Control de horarios que se pisan, ciclo de vida del turno y reprogramación.':
+      'Overlap control, appointment lifecycle and rescheduling.',
+    'Interpretación de mensajes con Gemini y respaldo por reglas locales si el servicio falla.':
+      'Message interpretation with Gemini and a local rules fallback if the service fails.',
+    '65 tests unitarios y 17 de integración en .NET, más 39 en Angular. Docker Compose y CI incluidos.':
+      '65 unit and 17 integration tests in .NET, plus 39 in Angular. Docker Compose and CI included.',
+    'Dónde apliqué todo esto': 'Where I applied all this',
+    'Ingeniero de Software .NET': '.NET Software Engineer',
+    '2025 — presente': '2025 — present',
+    'Desarrollador principal en proyectos estratégicos para el Ministerio de Turismo e Industria. Pipelines de CI/CD y análisis de calidad de código con SonarQube.':
+      'Lead developer on strategic projects for the Ministry of Tourism and Industry. CI/CD pipelines and code quality analysis with SonarQube.',
+    'Desarrollador .NET Freelance — Automatización con IA': '.NET Freelance Developer — AI Automation',
+    '2021 — presente': '2021 — present',
+    'Portales de seguros usados por numerosas agencias. Proceso de emisión automática con Dify y Power Automate que procesa un alto volumen de emisiones diarias sin intervención manual.':
+      'Insurance portals used by numerous agencies. Automatic issuance process with Dify and Power Automate that handles a high daily volume of issuances with no manual intervention.',
+    'Desarrollador .NET (Consultor)': '.NET Developer (Consultant)',
+    'Desarrollo de aplicaciones .NET para proyectos clave de Minsait, optimizando procesos críticos y rendimiento.':
+      'Developed .NET applications for key Minsait projects, optimizing critical processes and performance.',
+    '+ Itecnous, Hiberus, The App Master y IPG MediaBrands (2018 — 2023) — trayectoria completa en el CV.':
+      '+ Itecnous, Hiberus, The App Master and IPG MediaBrands (2018 — 2023) — full history in the CV.',
+    'Con qué trabajo': 'What I work with',
+    'IA & AUTOMATIZACIÓN': 'AI & AUTOMATION',
+    'DATOS & CLOUD': 'DATA & CLOUD',
+    'Agentes LLM': 'LLM Agents',
+    '¿Hablamos?': "Let's talk?",
+    'Valencia, España. Para comentarios o consultas sobre desarrollo .NET y automatización con IA.':
+      'Valencia, Spain. For comments or questions about .NET development and AI automation.',
+    '© 2026 Fabrizio Bonafina — Valencia, España': '© 2026 Fabrizio Bonafina — Valencia, Spain'
+  };
+
+  var TITULO = { es: document.title, en: 'Fabrizio Bonafina — Full-Stack .NET & AI' };
+  var meta = document.querySelector('meta[name="description"]');
+  var DESCRIPCION = {
+    es: meta ? meta.content : '',
+    en: 'Senior Full-Stack .NET Developer specialized in automation and AI agents in production. Valencia, Spain.'
+  };
+  var CV = { es: 'assets/CV_FabrizioBonafina.pdf', en: 'assets/CV_FabrizioBonafina_EN.pdf' };
+
+  function norm(s) { return s.replace(/\s+/g, ' ').trim(); }
+
+  var nodos = [];
+  var recorrido = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+  while (recorrido.nextNode()) {
+    var n = recorrido.currentNode;
+    var padre = n.parentElement && n.parentElement.tagName;
+    if (padre !== 'SCRIPT' && padre !== 'STYLE' && norm(n.nodeValue)) nodos.push({ nodo: n, original: n.nodeValue });
+  }
+
+  function aplicar(idioma) {
+    nodos.forEach(function (item) {
+      if (idioma === 'en') {
+        var traduccion = EN[norm(item.original)];
+        if (traduccion !== undefined) {
+          item.nodo.nodeValue = item.original.match(/^\s*/)[0] + traduccion + item.original.match(/\s*$/)[0];
+          return;
+        }
+      }
+      item.nodo.nodeValue = item.original;
+    });
+
+    document.documentElement.lang = idioma;
+    document.title = TITULO[idioma];
+    if (meta) meta.content = DESCRIPCION[idioma];
+    document.querySelectorAll('a[href$=".pdf"]').forEach(function (a) { a.setAttribute('href', CV[idioma]); });
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.lang === idioma));
+    });
+  }
+
+  function idiomaInicial() {
+    var pedido = new URLSearchParams(location.search).get('lang');
+    if (pedido === 'es' || pedido === 'en') return pedido;
+    try {
+      var guardado = localStorage.getItem('idioma');
+      if (guardado === 'es' || guardado === 'en') return guardado;
+    } catch (e) { /* sin almacenamiento: se usa el idioma del navegador */ }
+    return /^es/i.test(navigator.language || '') ? 'es' : 'en';
+  }
+
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      aplicar(b.dataset.lang);
+      try { localStorage.setItem('idioma', b.dataset.lang); } catch (e) { /* no pasa nada */ }
+    });
+  });
+
+  aplicar(idiomaInicial());
+})();
+</script>
 
 </body>
 </html>
